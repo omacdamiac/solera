@@ -1,7 +1,5 @@
 # Solera
 
-[DEMO PRUEBA](http://www.omacdamiac.com/solera/dashboard){:target="_blank" rel="noopener"}
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
 
 ## Development server
