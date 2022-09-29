@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Servicios</h2>
+    </div>
+</div>
+<nav>
+    <ul>
+        <ng-container *ngFor="let option of options">
+            <li><a [routerLink]="[ option.description, option.slug ]"  routerLinkActive="active">{{ option.name }}</a></li>
+        </ng-container>
+    </ul>
+</nav>
+ 

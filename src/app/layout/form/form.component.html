@@ -1,0 +1,57 @@
+
+<div class="card" [formGroup]="form">
+  <div class="card-body">
+    <h4>Servicio</h4>
+    <app-input
+      [formParent]="form"
+      [label]="inputName.text"
+      [placeholder]="inputName.place"
+      [name]="inputName.name"
+      [required]="inputName.required"
+      [type]="inputName.type"
+    ></app-input>
+    <app-input
+      [formParent]="form"
+      [label]="inputDescription.text"
+      [placeholder]="inputDescription.place"
+      [name]="inputDescription.name"
+      [required]="inputDescription.required"
+      [type]="inputDescription.type"
+    ></app-input>
+      <app-input
+      [formParent]="form"
+      [name]="inputId.name"
+      [required]="inputId.required"
+      [type]="inputId.type"
+    ></app-input>
+  </div>
+  <div class="card-body bg-light">
+    <span *ngIf="valida" class="w-100 isvalid text-center"
+      >Rellenar campos requeridos</span
+    >
+    <app-button
+      *ngIf="actionForm"
+      [color]="buttonModificar.color"
+      [texto]="buttonModificar.texto"
+      (evento)="update()"
+    ></app-button>
+    <app-button
+      *ngIf="!actionForm"
+      [color]="buttonGrabar.color"
+      [texto]="buttonGrabar.texto"
+      (evento)="save()"
+    ></app-button>
+    <app-button
+      *ngIf="!actionForm"
+      [color]="buttonCancelar.color"
+      [texto]="buttonCancelar.texto"
+      (evento)="cancel()"
+    ></app-button>
+    <app-button
+      *ngIf="actionForm"
+      [color]="buttonCancelarModificacion.color"
+      [texto]="buttonCancelarModificacion.texto"
+      (evento)="reset()"
+    ></app-button>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<app-loader></app-loader>
+<div class="container">
+  <app-header [options]="nav"></app-header>
+  <div class="row">
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-3">
+      <app-form
+      [form]="formJobs"
+      (formChange)="new()" 
+      ></app-form>
+    </div>
+  </div>
+</div>

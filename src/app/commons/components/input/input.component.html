@@ -1,0 +1,34 @@
+<div [formGroup]="formParent" class="mb-3">
+  <label [for]="name"
+    >{{ label }}
+    <span
+      [ngClass]="{
+        isvalid:
+          formParent.controls[name].invalid &&
+          (formParent.controls[name].dirty || formParent.controls[name].touched)
+      }"
+      >*</span
+    >
+  </label>
+  <input
+    [type]="type"
+    [name]="name"
+    [placeholder]="placeholder"
+    [formControlName]="name"
+    [required]="required"
+    value="HOLA"
+    class="form-control"
+  />
+  <span
+    class="isvalid"
+    *ngIf="
+      formParent.controls[name].invalid &&
+      (formParent.controls[name].dirty || formParent.controls[name].touched)
+    "
+  >
+    nombre es requerido
+  </span>
+  <!-- <div *ngIf="name.errors?.['required']">
+        Name is required.
+      </div> -->
+</div>
