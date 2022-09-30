@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { InterfaceJobs } from 'src/app/core/models/jobs.model';
 import { ButtonNsModel } from '../button/model/button-ns.model';
 
@@ -10,7 +10,7 @@ import { ButtonNsModel } from '../button/model/button-ns.model';
 export class ItemComponent implements OnInit {
   @Input() item!: InterfaceJobs.IJobs
   @Output() miEvento = new EventEmitter<InterfaceJobs.IJobs>()
-  req: any
+
   buttonEdit = new ButtonNsModel.ButtonClass('Editar', 'primary')
   buttonDelete = new ButtonNsModel.ButtonClass('Eliminar', 'primary')
 
@@ -18,8 +18,17 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  ejecutarEvento(accion: string) {
+
+  scrollToElement($element): void {
+    $element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }
+
+  ejecutarEvento(accion: string) {    
     let datos = {...this.item, ...{type: accion}}
     this.miEvento.emit(datos)
+    const sc = document.querySelector('app-root')
+    this.scrollToElement(sc);
   }
+
+
 }

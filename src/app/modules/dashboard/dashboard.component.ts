@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
@@ -14,6 +14,7 @@ import { ListComponent } from "../list/list.component";
 export class DashboardComponent implements OnInit {
   formJobs: FormGroup;
   nav: InterfaceJobs.INav[];
+  @ViewChild('appFom', {static: true}) appFom: HTMLElement;
 
   constructor(
     private mainService: MainService,

@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { InterfaceJobs } from 'src/app/core/models/jobs.model';
 import { JobsService } from 'src/app/core/services';
-import { FormComponent } from 'src/app/layout/form/form.component';
 
 @Component({
   selector: 'app-list',
@@ -13,14 +11,10 @@ import { FormComponent } from 'src/app/layout/form/form.component';
 export class ListComponent implements OnInit {
 jobs: InterfaceJobs.IJobs[];
 constructor(
-    private route: ActivatedRoute,
     private jobsService: JobsService,
     public toastr: ToastrService,
-  ) {
-    this.route.params.subscribe({
-      next: rout => console.log(rout.item)
-    })
-  }
+  ) {}
+  
 
   ngOnInit(): void {
     this.getJobs();

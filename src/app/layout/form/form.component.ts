@@ -1,9 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { tap } from 'rxjs/operators';
+import { AbstractControl, Form, FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { ButtonNsModel } from 'src/app/commons/components/button/model/button-ns.model';
 import { InputNsModel } from 'src/app/commons/components/input/model/input-ns.model';
-import { InterfaceJobs } from 'src/app/core/models/jobs.model';
 import { JobsService } from 'src/app/core/services';
 
 @Component({
@@ -14,7 +12,7 @@ import { JobsService } from 'src/app/core/services';
 export class FormComponent implements OnInit {
   @Input() form!: FormGroup;
   @Output() formChange = new EventEmitter<FormGroup>();
-
+focused = true;
 buttonGrabar = new ButtonNsModel.ButtonClass('Grabar', 'success')
 buttonModificar = new ButtonNsModel.ButtonClass('Modificar', 'success')
 buttonCancelar = new ButtonNsModel.ButtonClass('Cancelar', 'danger')
@@ -42,13 +40,13 @@ inputNameValue: string;
     'hidden'
   )
 
-  get fomrItem(): FormGroup['controls'] {
-    return this.form.controls;
+  get formItem(): AbstractControl {
+    return this.form.controls['name'];
   }
   constructor(
     private jobsService: JobsService,
-  ) { 
-  }
+  ) { }
+
   ngOnInit() {
   }
 
